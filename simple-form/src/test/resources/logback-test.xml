@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration scan="true" scanPeriod="10000">
+
+    <appender name="CONSOLE"
+        class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss,SSSZ"} [%thread] %-5level
+                %logger{36}:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <appender name="FILE"
+        class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>/logs/app.log</file>
+        <rollingPolicy
+            class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>/logs/app-%d.log</fileNamePattern>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%d{"yyyy-MM-dd'T'HH:mm:ss,SSSZ"} [%thread] %-5level
+                %logger{36}:%L - %msg%n</pattern>
+        </encoder>
+    </appender>
+
+    <logger name="org.springframework" level="INFO" />
+
+    <root level="INFO">
+        <appender-ref ref="CONSOLE" />
+        <appender-ref ref="FILE" />
+    </root>
+</configuration>
