@@ -80,7 +80,7 @@ public class UserService {
             throw new IllegalArgumentException("Invalid user Id:" + id);
         }
         
-        return userDao.findById(id).get();
+        return user.get();
     }
     
     public Iterable<User> getUsers() {
